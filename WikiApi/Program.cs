@@ -39,7 +39,11 @@ namespace WikiApi
                 JObject queryData = JObject.Parse(queryContent);
                 string article = queryData["query"]["pages"][pageID]["extract"].ToString();
 
+                article = article.Replace("</p><p>", "\r\n");
+
                 Console.WriteLine(article);
+
+                System.IO.File.WriteAllText(@"C:\temp\" + pageID + ".txt", article);
             }
         }
 
