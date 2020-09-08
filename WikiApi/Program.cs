@@ -34,7 +34,7 @@ namespace WikiApi
             {
                 string pageID = searchData["query"]["search"][0]["pageid"].ToString();
                 Console.WriteLine("pageID=" + pageID);
-                string queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&pageids=" + pageID + "&format=json";
+                string queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&pageids=" + pageID + "&format=json";
                 string queryContent = GetHttpContent(queryURL).Result;
                 JObject queryData = JObject.Parse(queryContent);
                 string article = queryData["query"]["pages"][pageID]["extract"].ToString();
