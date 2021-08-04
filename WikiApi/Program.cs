@@ -27,10 +27,10 @@ namespace WikiApi
 
             Task<string> taskResult = GetHttpContent(searchURL);
             string content = taskResult.Result;
-            Console.WriteLine(content);
+            //Console.WriteLine(content);
             JObject searchData = JObject.Parse(content);
             
-            int totalHits = Int32.Parse(searchData["query"]["searchinfo"]["totalhits"].ToString());
+            int totalHits = int.Parse(searchData["query"]["searchinfo"]["totalhits"].ToString());
             if (totalHits > 0)
             {
                 string pageID = searchData["query"]["search"][0]["pageid"].ToString();
@@ -42,7 +42,7 @@ namespace WikiApi
 
                 article = article.Replace("</p><p>", "\r\n");
 
-                //Console.WriteLine(article);
+                Console.WriteLine(article);
 
                 Console.ReadKey();
 
